@@ -128,8 +128,6 @@ $pattern = '/(?<!3)casa/'; // Cerca 'casa' solo se NON è preceduto da '3'
 echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Non trovato */
 
 
-
-
 //% Esempi di espressioni regolari
 /*
 $nome = '[A-Z][a-z]+';
