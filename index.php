@@ -5,11 +5,20 @@
 //$ Delimitatori + preg_quote()
 /* $string = ". * + ? ^ $ [ ] { } ( ) | \ / # ~";
 $string = preg_quote($string, "/");
-echo $string;
-// \. \* \+ \? \^ \$ \[ \] \{ \} \( \) \| \\ \/ \# ~ */
+echo $string; */
+// \. \* \+ \? \^ \$ \[ \] \{ \} \( \) \| \\ \/ \# ~
 
 
 //$ Metacaratteri + modificatori + preg_match()
+
+//* preg_match()
+/* $subject = "Hello, World!";
+$pattern = '/world/i';
+preg_match($pattern, $subject, $matches);
+echo '<pre>';
+print_r($matches);
+echo '</pre>'; */
+
 
 //* Esempio con $flags
 /* $subject = "Hello, World!";
@@ -19,10 +28,11 @@ echo '<pre>';
 print_r($matches);
 echo '</pre>'; */
 
+
 //* Esempio con $offset
-/*  $subject = "Hello, World! Hello again!";
+/* $subject = "Hello, World! Hello again!";
 $pattern = '/hello/i';
-preg_match($pattern, $subject, $matches, 0, 14);
+preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 14);
 echo '<pre>';
 print_r($matches);
 echo '</pre>'; */
@@ -53,15 +63,16 @@ echo '</pre>'; */
 $pattern = '/mondo/';
 $replacement = 'universo';
 $replaced_string = preg_replace($pattern, $replacement, $string);
-echo $replaced_string;  // Ciao universo!
- */
+echo $replaced_string;  // Ciao universo! */
 
 
 //* preg_split() base
 /* $string = 'Ciao-mondo-universo';
 $pattern = '/-/';
 $split_string = preg_split($pattern, $string);
-print_r($split_string); */
+echo '<pre>';
+print_r($split_string);
+echo '</pre>'; */
 // Array ([0] => 'Ciao' [1] => 'mondo' [2] => 'universo')
 
 
@@ -70,17 +81,22 @@ print_r($split_string); */
 $pattern = '/, /';
 $limit = 3;
 $split_string = preg_split($pattern, $string, $limit);
-print_r($split_string); */
+echo '<pre>';
+print_r($split_string);
+echo '</pre>'; */
 // Array ([0] => 'One' [1] => 'Two' [2] => 'Three, Four, Five')
 
 
 //$ Quantificatori + preg_match_all()
-
 /* $personal_IP = '192.168.1.1';
 $pattern = '/[0-9]{1,3}/';
+
 //$pattern = '/[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/';
 preg_match($pattern, $personal_IP, $r);
-var_dump($r); */
+echo '<pre>';
+print_r($r);
+echo '</pre>'; */
+
 
 /* $personal_IP = '192.168.1.1';
 $pattern = '/[0-9]{1,3}/';
@@ -100,9 +116,12 @@ echo preg_replace($pattern, $replacement, $string); */
 
 
 //$ Confine di parola
-/* $string = 'casa casamata casalinga';
+/* $string = 'casa casa casamata casalinga';
 $pattern = '/\bcasa\b/';  // Cerca esattamente la parola 'casa'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato';  // Trovato */
+echo preg_match_all($pattern, $string, $match);
+echo '<pre>';
+print_r($match);
+echo '</pre>'; */
 
 
 
@@ -110,7 +129,7 @@ echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato';  // Trovato */
 //* Lookahead positivo
 /* $string = 'casa3';
 $pattern = '/casa(?=3)/'; // Cerca 'casa' solo se è seguito da '3'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Trovato */
+echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato';  */// Trovato
 
 //* Lookbehind positivo
 /* $string = '3casa';
@@ -119,13 +138,15 @@ echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Trovato */
 
 //* Lookahead negativo
 /* $string = 'casa3';
-$pattern = '/casa(?!3)/'; // Cerca 'casa' solo se NON è seguito da '3'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Non trovato */
+$pattern = '/casa(?!3)/';
+// Cerca 'casa' solo se NON è seguito da '3'
+echo preg_match($pattern, $string) ? 'True' : 'False'; // False */
 
 //* Lookbehind negativo
 /* $string = '3casa';
-$pattern = '/(?<!3)casa/'; // Cerca 'casa' solo se NON è preceduto da '3'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Non trovato */
+$pattern = '/(?<!3)casa/';
+// Cerca 'casa' solo se NON è preceduto da '3'
+echo preg_match($pattern, $string) ? 'True' : 'False'; // False */
 
 
 //% Esempi di espressioni regolari
