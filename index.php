@@ -2,22 +2,23 @@
 
 //% Espressioni regolari
 
-//$ Delimitatori + preg_quote()
+//, Delimitatori + preg_quote()
 /* $string = ". * + ? ^ $ [ ] { } ( ) | \ / # ~";
 $string = preg_quote($string, "/");
 echo $string; */
 // \. \* \+ \? \^ \$ \[ \] \{ \} \( \) \| \\ \/ \# ~
 
 
-//$ Metacaratteri + modificatori + preg_match()
+
+//, Metacaratteri + modificatori + preg_match()
+
 
 //* preg_match()
 /* $subject = "Hello, World!";
-$pattern = '/world/i';
+$pattern = '/hello/i';
 preg_match($pattern, $subject, $matches);
-echo '<pre>';
-print_r($matches);
-echo '</pre>'; */
+echo '<pre>'; print_r($matches); echo '</pre>'; */
+
 
 
 //* Esempio con $flags
@@ -38,16 +39,21 @@ print_r($matches);
 echo '</pre>'; */
 
 
-//$ Ancore + preg_grep()
+//, Ancore + preg_grep()
 //* Es1 con ^
 /* $array = ["Ciao Mondo", "Ciao Italia",
 "Buongiorno Mondo", "Arrivederci Mondo"];
+
+
 $results = preg_grep("/^Ciao/", $array);
 echo '<pre>';
 print_r($results);
-echo '</pre>'; */
+echo '</pre>';
+ */
+
 
 //* Es2 con $
+
 /* $array = ["Ciao Mondo!", "Ciao Italia.",
 "Buongiorno Mondo!", "Arrivederci Mondo"];
 $results = preg_grep("/!$/", $array);
@@ -56,7 +62,7 @@ print_r($results);
 echo '</pre>'; */
 
 
-//$ Classi + Classi predefinite
+//, Classi + Classi predefinite
 
 //* preg_replace()
 /* $string = 'Ciao mondo!';
@@ -87,12 +93,13 @@ echo '</pre>'; */
 // Array ([0] => 'One' [1] => 'Two' [2] => 'Three, Four, Five')
 
 
-//$ Quantificatori + preg_match_all()
-/* $personal_IP = '192.168.1.1';
-$pattern = '/[0-9]{1,3}/';
+//, Quantificatori + preg_match_all()
+$personal_IP = '192.168.1.1';
+// $pattern = '/[0-9]{1,3}/';
 
-//$pattern = '/[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/';
-preg_match($pattern, $personal_IP, $r);
+// $pattern = '/[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/';
+
+/* preg_match($pattern, $personal_IP, $r);
 echo '<pre>';
 print_r($r);
 echo '</pre>'; */
@@ -103,10 +110,12 @@ $pattern = '/[0-9]{1,3}/';
 preg_match_all($pattern, $personal_IP, $r);
 echo '<pre>';
 print_r($r);
-echo '</pre>'; */
+echo '</pre>';
+ */
 
 
-//$ Gruppi e Riferimento all'indietro
+
+//, Gruppi e Riferimento all'indietro
 /* $string = 'abc abc abc';
 $pattern = '/(abc) \1/';  // \1 si riferisce al primo gruppo
 $replacement = '$1-def';  // $1 si riferisce al primo gruppo
@@ -115,7 +124,7 @@ echo preg_replace($pattern, $replacement, $string); */
 
 
 
-//$ Confine di parola
+//, Confine di parola
 /* $string = 'casa casa casamata casalinga';
 $pattern = '/\bcasa\b/';  // Cerca esattamente la parola 'casa'
 echo preg_match_all($pattern, $string, $match);
@@ -125,16 +134,21 @@ echo '</pre>'; */
 
 
 
-//$ Lookahead e Lookbehind
+//, Lookahead e Lookbehind
 //* Lookahead positivo
 /* $string = 'casa3';
 $pattern = '/casa(?=3)/'; // Cerca 'casa' solo se è seguito da '3'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato';  */// Trovato
+echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; */
+
+// Trovato
 
 //* Lookbehind positivo
 /* $string = '3casa';
 $pattern = '/(?<=3)casa/'; // Cerca 'casa' solo se è preceduto da '3'
-echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; // Trovato */
+echo preg_match($pattern, $string) ? 'Trovato' : 'Non trovato'; */
+
+// Trovato
+
 
 //* Lookahead negativo
 /* $string = 'casa3';
